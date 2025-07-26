@@ -327,7 +327,7 @@ function updateDashboard() {
    
     
     // Mettre à jour les investissements
-    const investmentsContainer = document.getElementById('');
+    const investmentsContainer = document.getElementById('user-investments');
     investmentsContainer.innerHTML = '';
     
     if (userData.investments.length === 0) {
