@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestPro - Plateforme d'Investissement Professionnelle</title>
+    <link rel="stylesheet" href="c.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <h2>InvestPro</h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('home')">
+                        <i class="fas fa-home"></i>
+                        Accueil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('dashboard')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('history')">
+                        <i class="fas fa-history"></i>
+                        Historique
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showPage('team')">
+                        <i class="fas fa-users"></i>
+                        Équipe
+                    </a>
+                </li>
+
+                 <li class="nav-item">
+                    <a href="https://t.me/+9lAn3YczJzM1lYjU0" class="nav-link" onclick="showPage('')">
+                        <i class="fas fa-headset"></i>
+                        Service-client
+                    </a>
+                </li>
+
+                 <li class="nav-item">
+                    <a href="Index.HTML" class="nav-link" onclick="showPage('')">
+                        <i class="fa-share-alt"></i>
+                       Déconnexion
+                    </a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page d'accueil -->
+    <div id="home" class="page active">
+        <header class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Investissez intelligemment avec InvestPro</h1>
+                <p>Découvrez nos paquets d'investissement avec des rendements garantis sur 45 jours</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Paquets disponibles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Jours de rendement</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Sécurisé</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="packages-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nos Paquets d'Investissement</h2>
+                    <p class="section-subtitle">Choisissez le paquet qui correspond à vos objectifs financiers</p>
+                </div>
+                <div class="packages-grid" id="packages-grid">
+                    <!-- Les paquets seront générés par JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Sécurité Maximale</h3>
+                        <p>Vos investissements sont protégés par des protocoles de sécurité avancés</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Rendements Garantis</h3>
+                        <p>Des rendements quotidiens garantis pendant 45 jours consécutifs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Accès Mobile</h3>
+                        <p>Gérez vos investissements depuis n'importe quel appareil, à tout moment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dashboard utilisateur -->
+    <div id="dashboard" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Dashboard Utilisateur</h2>
+                <p class="page-subtitle">Gérez vos investissements et suivez vos performances</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="balance-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wallet"></i> Solde Disponible</h3>
+                    </div>
+                    <div class="balance-amount" id="balance-amount">0 XAF</div>
+                    <button class="mine-btn" id="mine-btn" onclick="mineGains()">
+                        <i class="fas fa-pickaxe"></i>
+                        <span id="mine-text">Miner mes gains</span>
+                        <span id="mine-timer" class="hidden"></span>
+                    </button>
+                </div>
+
+                <div class="actions-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Actions Rapides</h3>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn withdraw-btn" onclick="showWithdrawModal()">
+                            <i class="fas fa-arrow-up"></i>
+                            Demander un retrait
+                        </button>
+                        <button class="action-btn deposit-btn" onclick="showDepositModal()">
+                            <i class="fas fa-arrow-down"></i>
+                            Déposer des fonds
+                        </button>
+                    </div>
+                </div>
+
+                <div class="investments-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Mes Investissements</h3>
+                    </div>
+                    <div id="user-investments">
+                        <!-- Investissements de l'utilisateur -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions-section">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Historique des Transactions</h3>
+                </div>
+                <div class="transactions-list" id="transactions-list">
+                    <!-- Transactions seront affichées ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Historique -->
+    <div id="history" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Historique des Investissements</h2>
+                <p class="page-subtitle">Suivez l'évolution détaillée de vos investissements</p>
+            </div>
+            <div class="history-content" id="history-content">
+                <!-- Historique détaillé -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Équipe/Parrainage -->
+    <div id="team" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Équipe & Parrainage</h2>
+                <p class="page-subtitle">Développez votre réseau et gagnez des commissions</p>
+            </div>
+            
+            <div class="referral-section">
+                <div class="referral-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-qrcode"></i> Votre Code de Parrainage</h3>
+                    </div>
+                    <div class="referral-code" id="referral-code">INV123456</div>
+                    <button class="share-btn" onclick="shareReferralCode()">
+                        <i class="fas fa-share-alt"></i>
+                        Partager le code
+                    </button>
+                </div>
+                
+                
+
+                <div class="referral-stats">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-bar"></i> Statistiques</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="referral-count">0</div>
+                                <div class="stat-label">Filleuls inscrits</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="commission-earned">0 XAF</div>
+                                <div class="stat-label">Commissions gagnées</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'achat -->
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Acheter un Paquet d'Investissement</h3>
+                <span class="close" onclick="closePurchaseModal()">&times;</span>
+            </div>
+            <div id="selected-package-info"></div>
+            <div class="payment-methods">
+                <h4>Méthode de paiement:</h4>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="mtn">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>MTN Mobile Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="orange">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Orange Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="crypto">
+                        <div class="payment-content">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Crypto-monnaies</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button class="confirm-btn" onclick="confirmPurchase()">
+                <i class="fas fa-check"></i>
+                Confirmer l'achat
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de retrait -->
+    <div id="withdraw-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-arrow-up"></i> Demande de Retrait</h3>
+                <span class="close" onclick="closeWithdrawModal()">&times;</span>
+            </div>
+            <div class="withdraw-info">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Les retraits sont traités par notre service client dans un délai de 24-48h ouvrables.</p>
+                </div>
+            </div>
+            <input type="number" id="withdraw-amount" placeholder="Montant à retirer (XAF)">
+            <div class="payment-methods">
+                <h4>Méthode de retrait:</h4>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="withdraw-method" value="mtn">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>MTN Mobile Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="withdraw-method" value="orange">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Orange Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="withdraw-method" value="crypto">
+                        <div class="payment-content">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Crypto-monnaies</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button class="confirm-btn" onclick="confirmWithdraw()">
+                <i class="fas fa-paper-plane"></i>
+                Envoyer la demande
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de dépôt -->
+    <div id="deposit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-arrow-down"></i> Déposer des fonds</h3>
+                <span class="close" onclick="closeDepositModal()">&times;</span>
+            </div>
+             <div class="withdraw-info">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p><h3>Numero de transaction <br> MTN:6 83 34 01 36 NOM ( YVES LANDRY KENFACK) <br> Orange Money: 6 96 88 74 93 NOM ( AWOUNANG FOKOU ROSE)  </h3></p>
+                </div>
+            </div>
+            <input type="number" id="deposit-amount" placeholder="Montant à déposer (XAF)">
+            <div class="payment-methods">
+                <h3> NB: Une fois la transaction effecter veuiller Envoyer la capture d'écran au service client pour vérification <br>
+                  
+                    
+                </h3>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="deposit-method" value="mtn">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>MTN Mobile Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="deposit-method" value="orange">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Orange Money</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="deposit-method" value="crypto">
+                        <div class="payment-content">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Crypto-monnaies</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button class="confirm-btn" onclick="confirmDeposit()">
+                <i class="fas fa-check"></i>
+                Confirmer le dépôt
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
